@@ -1,0 +1,10 @@
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV\bin\Debug\QLSV.exe.config
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV\bin\Debug\QLSV.exe
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV\bin\Debug\QLSV.pdb
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.csprojAssemblyReference.cache
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.QLSV.resources
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.Properties.Resources.resources
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.csproj.GenerateResource.cache
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.csproj.CoreCompileInputs.cache
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.exe
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.pdb
