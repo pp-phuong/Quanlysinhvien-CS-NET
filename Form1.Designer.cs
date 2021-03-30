@@ -144,8 +144,6 @@ namespace QLSV
             // cbbLopSH
             // 
             this.cbbLopSH.FormattingEnabled = true;
-            this.cbbLopSH.Items.AddRange(new object[] {
-            "All"});
             this.cbbLopSH.Location = new System.Drawing.Point(67, 49);
             this.cbbLopSH.Name = "cbbLopSH";
             this.cbbLopSH.Size = new System.Drawing.Size(121, 21);

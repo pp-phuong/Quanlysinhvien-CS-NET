@@ -67,27 +67,36 @@ namespace QLSV
             string nameClass = cbb_LSH.Text;
             int ID_Class = CSDL.Instance.getIDLSH(nameClass);
             dr["ID_Class"] = ID_Class;
-            if (gb_ttsv.Text == "Chỉnh sửa thông tin sinh viên")
+            if (txt_mssv.Text == "" || txt_name.Text == "" || cbb_LSH.SelectedItem == null  )
             {
-                CSDL.Instance.updateSV(dr);
-                MessageBox.Show("Chỉnh sửa sinh viên thành công !");
-                this.Close();
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin ");
 
-            }
+            }   
             else
             {
-                if (CSDL.Instance.findMSSV(dr) == -1)
+                if (gb_ttsv.Text == "Chỉnh sửa thông tin sinh viên")
                 {
-                    CSDL.Instance.DTSV.Rows.Add(dr);
-                    MessageBox.Show("Thêm sinh viên thành công !");
+                    CSDL.Instance.updateSV(dr);
+                    MessageBox.Show("Chỉnh sửa sinh viên thành công !");
                     this.Close();
 
                 }
                 else
                 {
-                    MessageBox.Show("MSSV đã tồn tại!");
+                    if (CSDL.Instance.findMSSV(dr) == -1)
+                    {
+                        CSDL.Instance.DTSV.Rows.Add(dr);
+                        MessageBox.Show("Thêm sinh viên thành công !");
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("MSSV đã tồn tại!");
+                    }
                 }
             }
+           
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)

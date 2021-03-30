@@ -22,6 +22,7 @@ namespace QLSV
         }
         public void SetCbbLSH()
         {
+            cbbLopSH.Items.Add("All");
             foreach (DataRow i in CSDL.Instance.DTLSH.Rows)
             {
                 cbbLopSH.Items.Add(i["NameClass"].ToString());
@@ -64,8 +65,16 @@ namespace QLSV
         private void cbbLopSH_SelectedIndexChanged(object sender, EventArgs e)
         {
             string nameClass = cbbLopSH.Text;
-            int ID_Class = CSDL.Instance.getIDLSH(nameClass);
-            dataGridViewDSSV.DataSource = CSDL.Instance.getSVbyClassID(ID_Class);
+            if (nameClass == "All")
+            {
+                showAllSV();
+            }
+            else
+            {
+                int ID_Class = CSDL.Instance.getIDLSH(nameClass);
+                dataGridViewDSSV.DataSource = CSDL.Instance.getSVbyClassID(ID_Class);
+            }
+            
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -73,17 +82,20 @@ namespace QLSV
             DetailSV f = new DetailSV();
             f.delegateType("Thêm sinh viên");
             f.Show();
-            showAllSV();
             cbbLopSH.Text = "All";
+            showAllSV();
+
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
             DataGridViewRow dr = dataGridViewDSSV.SelectedRows[0];
+
             DetailSV f = new DetailSV();
             f.delegateType("Chỉnh sửa thông tin sinh viên");
             f.delegateEdit(dr);
             f.Show();
+            cbbLopSH_SelectedIndexChanged( sender,  e);
         }
 
         private void btn_delete_Click(object sender, EventArgs e)

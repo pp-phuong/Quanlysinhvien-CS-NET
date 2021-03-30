@@ -199,10 +199,13 @@ namespace QLSV
         }
         public DataTable sortSV(string type, DataTable dt)
         {
-            cloneData(dt);
+            dt =  cloneData(dt);
             type += " ASC";
             dt.DefaultView.Sort = type;
             dt = dt.DefaultView.ToTable();
+
+
+
             return dt;
         }
         public DataTable searchSV(string type, string search_key)
