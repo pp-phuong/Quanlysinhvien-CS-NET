@@ -8,3 +8,14 @@ D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.csproj.GenerateResourc
 D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.csproj.CoreCompileInputs.cache
 D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.exe
 D:\University\Năm 2\Kì 4\NET\Visual\QLSV\obj\Debug\QLSV.pdb
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\bin\Debug\QLSV.exe.config
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\bin\Debug\QLSV.exe
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\bin\Debug\QLSV.pdb
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\obj\Debug\QLSV.csprojAssemblyReference.cache
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\obj\Debug\QLSV.QLSV.resources
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\obj\Debug\QLSV.Properties.Resources.resources
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\obj\Debug\QLSV.csproj.GenerateResource.cache
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\obj\Debug\QLSV.csproj.CoreCompileInputs.cache
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\obj\Debug\QLSV.exe
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\obj\Debug\QLSV.pdb
+D:\University\Năm 2\Kì 4\NET\Visual\QLSV_Ver2\obj\Debug\QLSV.DetailSV.resources

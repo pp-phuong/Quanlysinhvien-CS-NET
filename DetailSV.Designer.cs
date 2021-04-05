@@ -66,7 +66,6 @@ namespace QLSV
             this.gb_ttsv.TabIndex = 0;
             this.gb_ttsv.TabStop = false;
             this.gb_ttsv.Text = "Thông tin Sinh viên";
-            this.gb_ttsv.Enter += new System.EventHandler(this.gb_ttsv_Enter);
             // 
             // cbb_LSH
             // 
@@ -75,6 +74,7 @@ namespace QLSV
             this.cbb_LSH.Name = "cbb_LSH";
             this.cbb_LSH.Size = new System.Drawing.Size(121, 21);
             this.cbb_LSH.TabIndex = 7;
+          
             // 
             // btn_cancel
             // 
@@ -107,6 +107,7 @@ namespace QLSV
             this.groupBoxGender.TabIndex = 4;
             this.groupBoxGender.TabStop = false;
             this.groupBoxGender.Text = "Gender";
+         
             // 
             // radioFemale
             // 
@@ -151,7 +152,7 @@ namespace QLSV
             this.txt_name.Location = new System.Drawing.Point(103, 72);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(100, 20);
-            this.txt_name.TabIndex = 1;
+            this.txt_name.TabIndex = 2;
             // 
             // txt_mssv
             // 
@@ -194,6 +195,7 @@ namespace QLSV
             this.ClientSize = new System.Drawing.Size(393, 450);
             this.Controls.Add(this.gb_ttsv);
             this.Name = "DetailSV";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailSV";
             this.gb_ttsv.ResumeLayout(false);
             this.gb_ttsv.PerformLayout();

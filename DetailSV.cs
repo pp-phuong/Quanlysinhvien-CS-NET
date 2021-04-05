@@ -12,10 +12,8 @@ namespace QLSV
 {
     public partial class DetailSV : Form
     {
-        public delegate void delEdit(DataGridViewRow r);
-        public delegate void delType(string type);
+        public delegate void delType(int mssv, int class_id);
         public delType delegateType { get; set; }
-        public delEdit delegateEdit { get; set; }
         public DetailSV()
         {
             InitializeComponent();
@@ -24,79 +22,47 @@ namespace QLSV
         }
         public void SetCbbLSH()
         {
-            foreach (DataRow i in CSDL.Instance.DTLSH.Rows)
+
+            cbb_LSH.Items.Add("Chọn lớp");
+            foreach (LSH i in CDSL_Handle.Instance.ListLSH)
             {
-                cbb_LSH.Items.Add(i["NameClass"].ToString());
+                cbb_LSH.Items.Add(i.getName());
             }
             cbb_LSH.Text = "Chọn lớp";
+        }
+        private void setType(int mssv, int class_id)
+        {
+            if(mssv == -1)
+            {
+                gb_ttsv.Text = "Thêm sinh viên mới";
+            }    
+            else
+            {
+                gb_ttsv.Text = "Chỉnh sửa thông tin sinh viên";
+                getInforEdit(mssv, class_id);
+
+            }
 
         }
-        private void setType(string type)
+        private void getInforEdit(int mssv, int class_id)
         {
-            gb_ttsv.Text = type;
-            if (type == "Chỉnh sửa thông tin sinh viên")
-            {
-                delegateEdit = new delEdit(getInforEdit);
-            }
-        }
-        private void getInforEdit(DataGridViewRow dr)
-        {
-            txt_mssv.Text = dr.Cells["MSSV"].Value.ToString();
-            txt_name.Text = dr.Cells["NameSV"].Value.ToString();
-            dtp_birthday.Value = Convert.ToDateTime(dr.Cells["Birthday"].Value.ToString()); ;
-            cbb_LSH.SelectedItem = dr.Cells["ID_Class"].Value.ToString();
-            if (dr.Cells["Gender"].Value.ToString() == "true")
+            SV s = CDSL_Handle.Instance.getSVbyMSSV(mssv);
+            MessageBox.Show(s.ToString());
+            txt_mssv.Text = s.MSSV.ToString();
+            txt_name.Text = s.NameSV;
+            dtp_birthday.Value = Convert.ToDateTime(s.Birthday);
+                
+            int indexClass = CDSL_Handle.Instance.getIndexLSH(class_id);
+            cbb_LSH.SelectedItem = cbb_LSH.Items[indexClass+1];
+            LSH lop = CDSL_Handle.Instance.getLSHById(class_id);
+            
+
+            if (s.Gender)
             {
                 radio_male.Checked = true;
             }
-            else radio_male.Checked = false;
+            else radioFemale.Checked = true;
             txt_mssv.Enabled = false;
-        }
-        private void btn_confirm_Click(object sender, EventArgs e)
-        {
-
-            DataRow dr = CSDL.Instance.DTSV.NewRow();
-            dr["MSSV"] = txt_mssv.Text;
-            dr["NameSV"] = txt_name.Text;
-            if (radio_male.Checked == true)
-            {
-                dr["Gender"] = true;
-            }
-            else dr["Gender"] = false;
-            dr["Birthday"] = dtp_birthday.Value;
-            string nameClass = cbb_LSH.Text;
-            int ID_Class = CSDL.Instance.getIDLSH(nameClass);
-            dr["ID_Class"] = ID_Class;
-            if (txt_mssv.Text == "" || txt_name.Text == "" || cbb_LSH.SelectedItem == null  )
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin ");
-
-            }   
-            else
-            {
-                if (gb_ttsv.Text == "Chỉnh sửa thông tin sinh viên")
-                {
-                    CSDL.Instance.updateSV(dr);
-                    MessageBox.Show("Chỉnh sửa sinh viên thành công !");
-                    this.Close();
-
-                }
-                else
-                {
-                    if (CSDL.Instance.findMSSV(dr) == -1)
-                    {
-                        CSDL.Instance.DTSV.Rows.Add(dr);
-                        MessageBox.Show("Thêm sinh viên thành công !");
-                        this.Close();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("MSSV đã tồn tại!");
-                    }
-                }
-            }
-           
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -104,9 +70,55 @@ namespace QLSV
             this.Close();
         }
 
-        private void gb_ttsv_Enter(object sender, EventArgs e)
+        private void btn_confirm_Click(object sender, EventArgs e)
         {
 
+            
+            if (txt_mssv.Text == "" || txt_name.Text == "" || cbb_LSH.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin ");
+
+            }
+            else
+            {
+                if (gb_ttsv.Text == "Chỉnh sửa thông tin sinh viên")
+                {
+                    CDSL_Handle.Instance.updateSV(getSV());
+                    MessageBox.Show("Chỉnh sửa sinh viên thành công !");
+                    this.Close();
+
+                }
+                else
+                {
+                    if (CDSL_Handle.Instance.addSV(getSV()))
+                    {
+                        MessageBox.Show("Thêm sinh viên thành công !");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("MSSV đã tồn tại!");
+                    }
+                }
+            }
+
+           
+        }
+        public SV getSV()
+        {
+            SV s = new SV();
+            s.MSSV = Convert.ToInt32(txt_mssv.Text);
+            s.NameSV = txt_name.Text;
+            if (radio_male.Checked == true)
+            {
+                s.Gender = true;
+            }
+            else s.Gender = false;
+            s.Birthday = dtp_birthday.Value;
+            int id_class = CDSL_Handle.Instance.getIDLSH(cbb_LSH.Text);
+            s.ClassID = id_class;
+
+            return s;
         }
     }
 }

@@ -53,10 +53,10 @@ namespace QLSV
             this.dataGridViewDSSV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDSSV.Location = new System.Drawing.Point(11, 30);
             this.dataGridViewDSSV.Name = "dataGridViewDSSV";
+            this.dataGridViewDSSV.ReadOnly = true;
             this.dataGridViewDSSV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDSSV.Size = new System.Drawing.Size(481, 150);
+            this.dataGridViewDSSV.Size = new System.Drawing.Size(573, 150);
             this.dataGridViewDSSV.TabIndex = 0;
-            this.dataGridViewDSSV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDSSV_CellContentClick);
             // 
             // label_lsh
             // 
@@ -74,11 +74,10 @@ namespace QLSV
             this.groupBox1.Controls.Add(this.btn_delete);
             this.groupBox1.Controls.Add(this.btn_edit);
             this.groupBox1.Controls.Add(this.btn_add);
-            this.groupBox1.Controls.Add(this.btn_show);
             this.groupBox1.Controls.Add(this.dataGridViewDSSV);
             this.groupBox1.Location = new System.Drawing.Point(56, 99);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(501, 254);
+            this.groupBox1.Size = new System.Drawing.Size(596, 254);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách SV";
@@ -86,14 +85,14 @@ namespace QLSV
             // cbb_sort
             // 
             this.cbb_sort.FormattingEnabled = true;
-            this.cbb_sort.Location = new System.Drawing.Point(371, 214);
+            this.cbb_sort.Location = new System.Drawing.Point(463, 214);
             this.cbb_sort.Name = "cbb_sort";
             this.cbb_sort.Size = new System.Drawing.Size(121, 21);
             this.cbb_sort.TabIndex = 6;
             // 
             // btn_sort
             // 
-            this.btn_sort.Location = new System.Drawing.Point(306, 212);
+            this.btn_sort.Location = new System.Drawing.Point(388, 212);
             this.btn_sort.Name = "btn_sort";
             this.btn_sort.Size = new System.Drawing.Size(46, 23);
             this.btn_sort.TabIndex = 5;
@@ -103,7 +102,7 @@ namespace QLSV
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(230, 212);
+            this.btn_delete.Location = new System.Drawing.Point(145, 212);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(42, 23);
             this.btn_delete.TabIndex = 4;
@@ -113,7 +112,7 @@ namespace QLSV
             // 
             // btn_edit
             // 
-            this.btn_edit.Location = new System.Drawing.Point(160, 212);
+            this.btn_edit.Location = new System.Drawing.Point(76, 212);
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(42, 23);
             this.btn_edit.TabIndex = 3;
@@ -123,7 +122,7 @@ namespace QLSV
             // 
             // btn_add
             // 
-            this.btn_add.Location = new System.Drawing.Point(84, 212);
+            this.btn_add.Location = new System.Drawing.Point(11, 212);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(43, 23);
             this.btn_add.TabIndex = 2;
@@ -133,7 +132,7 @@ namespace QLSV
             // 
             // btn_show
             // 
-            this.btn_show.Location = new System.Drawing.Point(11, 214);
+            this.btn_show.Location = new System.Drawing.Point(211, 47);
             this.btn_show.Name = "btn_show";
             this.btn_show.Size = new System.Drawing.Size(43, 23);
             this.btn_show.TabIndex = 1;
@@ -153,14 +152,15 @@ namespace QLSV
             // 
             // txt_search
             // 
-            this.txt_search.Location = new System.Drawing.Point(448, 51);
+            this.txt_search.Location = new System.Drawing.Point(552, 50);
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(100, 20);
             this.txt_search.TabIndex = 4;
+            this.txt_search.TextChanged += new System.EventHandler(this.txt_search_TextChanged);
             // 
             // btn_search
             // 
-            this.btn_search.Location = new System.Drawing.Point(473, 77);
+            this.btn_search.Location = new System.Drawing.Point(577, 76);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(75, 23);
             this.btn_search.TabIndex = 5;
@@ -174,7 +174,7 @@ namespace QLSV
             this.cbb_search_type.Items.AddRange(new object[] {
             "MSSV",
             "NameSV"});
-            this.cbb_search_type.Location = new System.Drawing.Point(427, 24);
+            this.cbb_search_type.Location = new System.Drawing.Point(531, 23);
             this.cbb_search_type.Name = "cbb_search_type";
             this.cbb_search_type.Size = new System.Drawing.Size(121, 21);
             this.cbb_search_type.TabIndex = 6;
@@ -182,7 +182,7 @@ namespace QLSV
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(352, 27);
+            this.label1.Location = new System.Drawing.Point(456, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 7;
@@ -191,7 +191,7 @@ namespace QLSV
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(352, 57);
+            this.label2.Location = new System.Drawing.Point(456, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
             this.label2.TabIndex = 7;
@@ -201,16 +201,18 @@ namespace QLSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 450);
+            this.ClientSize = new System.Drawing.Size(768, 408);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbb_search_type);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.txt_search);
+            this.Controls.Add(this.btn_show);
             this.Controls.Add(this.cbbLopSH);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label_lsh);
             this.Name = "QLSV";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QLSV";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDSSV)).EndInit();
             this.groupBox1.ResumeLayout(false);
