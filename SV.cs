@@ -54,14 +54,14 @@ namespace QLSV
         }
         public static bool Compare_Name(object o1, object o2)
         {
-            if (String.Compare(((SV)o1).getName(), ((SV)o2).getName()) < 0)
+            if (String.Compare(((SV)o1).getName(), ((SV)o2).getName()) > 0)
                 return true;
             else
                 return false;
         }
         public static bool Compare_MSSV(object o1, object o2)
         {
-            if( ((SV)o1).MSSV >= ((SV)o2).MSSV )
+            if( ((SV)o1).MSSV <= ((SV)o2).MSSV )
             {
                 return true;
             }    
@@ -83,7 +83,7 @@ namespace QLSV
         }
         public static bool Compare_Gender(object o1, object o2)
         {
-            if (String.Compare(((SV)o1).Gender.ToString(), ((SV)o2).Gender.ToString()) <= 0)
+            if (String.Compare(((SV)o1).Gender.ToString(), ((SV)o2).Gender.ToString()) >= 0)
             {
                 return true;
             }

@@ -46,8 +46,8 @@ namespace QLSV
         }
         private void getInforEdit(int mssv, int class_id)
         {
+            //create new sv form mssv by delegate
             SV s = CDSL_Handle.Instance.getSVbyMSSV(mssv);
-            MessageBox.Show(s.ToString());
             txt_mssv.Text = s.MSSV.ToString();
             txt_name.Text = s.NameSV;
             dtp_birthday.Value = Convert.ToDateTime(s.Birthday);
@@ -84,7 +84,7 @@ namespace QLSV
                 if (gb_ttsv.Text == "Chỉnh sửa thông tin sinh viên")
                 {
                     CDSL_Handle.Instance.updateSV(getSV());
-                    MessageBox.Show("Chỉnh sửa sinh viên thành công !");
+                    MessageBox.Show("Chỉnh sửa sinh viên thành công ! Bấm show lại để xem thay đổi");
                     this.Close();
 
                 }
@@ -92,7 +92,7 @@ namespace QLSV
                 {
                     if (CDSL_Handle.Instance.addSV(getSV()))
                     {
-                        MessageBox.Show("Thêm sinh viên thành công !");
+                        MessageBox.Show("Thêm sinh viên thành công ! Bấm show lại để xem thay đổi");
                         this.Close();
                     }
                     else

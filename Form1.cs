@@ -44,8 +44,14 @@ namespace QLSV
         private void show()
         {
             int ID_Class = getIdClassCurrent();
+            
             dataGridViewDSSV.DataSource = CDSL_Handle.Instance.getSVbyClassID(ID_Class);
+
             dataGridViewDSSV.Refresh();
+            if (CDSL_Handle.Instance.getSVbyClassID(ID_Class).Count == 0)
+            {
+                MessageBox.Show("Không có sinh viên nào !");
+            }
         }
         private void btn_show_Click(object sender, EventArgs e)
         {
@@ -145,6 +151,7 @@ namespace QLSV
         }
         private void search()
         {
+          
             if (cbb_search_type.SelectedItem != null)
             {
                 string type = cbb_search_type.SelectedItem.ToString();

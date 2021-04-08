@@ -159,7 +159,7 @@ namespace QLSV
             }
             if ("MSSV" == type)
             {
-                result = l.FindAll(i => i.MSSV == Convert.ToInt32(search_key));
+                result = l.FindAll(i => i.MSSV.ToString().Contains( search_key));
             }
             if ("NameSV" == type)
             {
@@ -264,6 +264,30 @@ namespace QLSV
                 l.Add(i);
             }
             return l;
+        }
+        public void updateDataSV()
+        {
+            DataTable DTSV = new DataTable();
+            DTSV.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("MSSV", typeof(String)),
+                new DataColumn("NameSV", typeof(String)),
+                new DataColumn("Gender", typeof(bool)),
+                new DataColumn("Birthday", typeof(DateTime)),
+                new DataColumn("ID_Class", typeof(int))
+            });
+
+            foreach( SV s in ListSV)
+            {
+                DataRow dr = DTSV.NewRow();
+                dr["MSSV"] = s.MSSV;
+                dr["NameSV"] = s.NameSV;
+                dr["Gender"] = s.Gender;
+                dr["Birthday"] = s.Birthday;
+                dr["ID_Class"] = s.ClassID;
+                DTSV.Rows.Add(dr);
+            }
+            CSDL.Instance.DTSV = DTSV;
         }
     }
 
